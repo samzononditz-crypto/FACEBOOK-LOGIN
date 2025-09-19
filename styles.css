@@ -1,0 +1,94 @@
+/* Animated gradient background with smooth transitions */
+:root{
+  --bg-duration: 12s;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+.gradient-bg {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: #fff;
+  /* Gradient background using CSS variables and animation */
+  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+  background-size: 600% 600%;
+  animation: gradientShift var(--bg-duration) ease infinite;
+}
+
+@keyframes gradientShift {
+  0%{ background-position: 0% 50%; }
+  25%{ background-position: 50% 50%; }
+  50%{ background-position: 100% 50%; }
+  75%{ background-position: 50% 50%; }
+  100%{ background-position: 0% 50%; }
+}
+
+/* Gentle color overlay for headings to improve contrast */
+h1, h2, h3, h4 { text-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+
+/* Respect user's motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .gradient-bg { animation: none; }
+}
+
+/* Basic layout for content so it's readable on the gradient */
+main {
+  width: 100%;
+  max-width: 960px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+img { max-width: 120px; height: auto; }
+
+form input, form button, form label { font-size: 16px; }
+
+/* Auth views */
+.auth-view { background: rgba(255,255,255,0.04); padding: 18px; border-radius: 8px; width: 320px; box-sizing: border-box; margin: 24px auto; }
+.auth-view h2 { margin-top: 0; }
+.auth-view input { width: 100%; padding: 10px; margin: 8px 0 12px; border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; background: rgba(255,255,255,0.03); color: inherit; }
+.auth-view button { width: 100%; padding: 10px 12px; border: none; border-radius: 6px; background: rgba(255,255,255,0.14); color: #fff; cursor: pointer; }
+.auth-view button:hover { background: rgba(255,255,255,0.2); }
+
+/* Small utility */
+[hidden] { display: none !important; }
+
+.plan-box { background: rgba(255,255,255,0.04); padding: 16px; border-radius: 8px; margin: 12px 0; }
+
+/* Plans grid */
+.plans-section { width: 100%; max-width: 1100px; margin: 24px auto; padding: 18px; box-sizing: border-box; }
+.plans-section h2 { margin: 0 0 8px; }
+.plans-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 16px; }
+.plan-card { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.06); padding: 18px; border-radius: 12px; position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; }
+.plan-card .plan-header { display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+.plan-card h3 { margin: 0; font-size: 1.1rem; }
+.plan-card .price { margin: 0; font-weight: 600; }
+.plan-card ul { margin: 12px 0; padding-left: 18px; }
+.plan-card li { margin-bottom: 8px; }
+.plan-actions { margin-top: auto; }
+.plan-actions button { width: 100%; padding: 10px; border-radius: 8px; border: none; background: rgba(0,0,0,0.5); color: #fff; cursor: pointer; }
+.plan-card.recommended { box-shadow: 0 8px 30px rgba(0,0,0,0.25); transform: translateY(-4px); }
+.plan-card .badge { position: absolute; top: 12px; right: 12px; background: linear-gradient(90deg,#ffd166,#ff6b6b); color:#111; padding:6px 10px; border-radius:999px; font-weight:700; font-size:0.75rem; }
+
+@media (max-width: 520px){
+  .plan-card { min-height: 200px; }
+}
+
+/* Tasks UI */
+.tasks-section { width: 100%; max-width: 1100px; margin: 24px auto; padding: 18px; box-sizing: border-box; }
+.points-bar { margin: 8px 0 16px; background: rgba(0,0,0,0.18); padding: 8px 12px; border-radius: 8px; display: inline-block; }
+.tasks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.task-card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.06); padding: 12px; border-radius: 10px; }
+.task-card h4 { margin: 0 0 8px; }
+.task-card p { margin: 0 0 12px; font-size: 0.95rem; }
+.task-card button { padding: 8px 10px; border-radius: 8px; border: none; background: rgba(255,255,255,0.12); color: #fff; cursor: pointer; }
+.task-card button:disabled { opacity: 0.6; cursor: default; }
+
+

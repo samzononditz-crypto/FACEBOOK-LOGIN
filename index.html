@@ -6,87 +6,167 @@
     <title>FACEBOOK MONETIZER</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body image src="https://facebook.com/images/fb_icon_325x325.png" alt="Facebook Icon">
-    <img src="https://facebook.com/images/fb_icon_325x325.png" alt="Facebook Icon">
-    <h1>Welcome to FACEBOOK MONETIZER</h1>
-    <p>Your one-stop solution for monetizing your Facebook content.</p>
-</body>
-<nav></nav>
+<body class="gradient-bg">
+    <!-- Auth views: register and login -->
+    <div id="auth">
+        <div id="register-view" class="auth-view">
+            <h2>Create account</h2>
+            <form id="register-form">
+                <label for="reg-name">Name</label>
+                <input id="reg-name" name="name" required>
+
+                <label for="reg-email">Email</label>
+                <input id="reg-email" name="email" type="email" required>
+
+                <label for="reg-password">Password</label>
+                <input id="reg-password" name="password" type="password" required>
+
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="#" id="show-login">Log in</a></p>
+        </div>
+
+        <div id="login-view" class="auth-view" hidden>
+            <h2>Log in</h2>
+            <form id="login-form">
+                <label for="login-email">Email</label>
+                <input id="login-email" name="email" type="email" required>
+
+                <label for="login-password">Password</label>
+                <input id="login-password" name="password" type="password" required>
+
+                <label><input id="login-remember" type="checkbox"> Remember me</label>
+
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="show-register">Register</a></p>
+        </div>
+    </div>
+
+    <!-- Main app content: hidden until authenticated -->
+    <div id="app" hidden>
+        <header style="width:100%; display:flex; align-items:center; justify-content:space-between; padding:16px 24px; box-sizing:border-box;">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <img src="https://facebook.com/images/fb_icon_325x325.png" alt="Facebook Icon">
+                <h1>Welcome to FACEBOOK MONETIZER</h1>
+            </div>
+            <div>
+                <span id="user-greeting"></span>
+                <button id="logout-btn">Logout</button>
+            </div>
+        </header>
+<!-- Navigation -->
+<nav>
     <ul>
         <li><a href="#features">Features</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
-<div>
-    <main img src="main-image.jpg" alt="Main Image">
-        <section id="features">
-            <h2>Features</h2>
-            <p>Discover the powerful features that help you monetize your Facebook presence effectively.</p>
-        </section>
-        <section id="pricing">
-            <h2>Pricing</h2>
-            <p>Choose a plan that fits your needs and budget. We offer competitive pricing for all our services.</p>
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>Have questions? Reach out to our support team for assistance.</p>
-        </section>
-        <form style="display: flex; flex-direction: column; max-width: 400px;">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <br>
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone" required>
-            <br>
-            <label for="country">Country:</label>
-            <input type="text" id="country" name="country" required>
-            <br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <br>
-            forgot password? <a href="#">Click here</a>
-            remember me <input type="checkbox" id="remember" name="remember">
-            save my details for next time <input type="checkbox" id="save" name="save">
-            <br>
-            18+ <input type="checkbox" id="age" name="age" required
-            <input type="submit" value="Submit">
-        </form>
-        <div class="plan-box">
-            <h3>Basic Plan</h3>
-            <p>$9.99/month</p>
-            <ul>
-                <li>Grow your audience</li>
-                <li>Increase your income</li>
-                <li>Customizable ad campaigns</li>
-            </ul>
-            <button>Choose Plan</button>
-            <div class="recommended">
-            <h4>Recommended</h4>
-            <p>$14.99/month - This plan is perfect for individuals looking to grow their Facebook presence.</p>
-            <ol>
-                <li>Advanced audience insights</li>
-                <li>Increased ad budget</li>
-                <li>Priority support</li>
-            </ol>
-            <button>Choose Plan</button>
-            <div>
-            <h3>Premium Plan</h3>
-            <p>$29.99/month</p>
-            <ul>
-                <li>All features from the Basic and Recommended plans</li>
-                <li>Dedicated account manager</li>
-                <li>Custom analytics reports</li>
-            </ul>
-            <button>Choose Plan</button>
-            </div>
+
+<main>
+    <section id="features">
+        <h2>Features</h2>
+        <p>Discover the powerful features that help you monetize your Facebook presence effectively.</p>
+    </section>
+    <section id="pricing">
+        <h2>Pricing</h2>
+        <p>Choose a plan that fits your needs and budget. We offer competitive pricing for all our services.</p>
+    </section>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Have questions? Reach out to our support team for assistance.</p>
+    </section>
+
+    <!-- registration form removed — authentication handled at top of page -->
+
+    <section id="earn-tasks" class="tasks-section">
+        <h2>Earn Tasks</h2>
+        <p>Complete simple tasks to earn points you can redeem for premium features.</p>
+        <div class="points-bar">Points: <strong id="user-points">0</strong></div>
+        <div id="tasks-container" class="tasks-grid">
+            <!-- Tasks will be rendered here by app.js -->
         </div>
-    </div>
-    <footer>
-        <p>&copy; 2024 FACEBOOK MONETIZER. All rights reserved.</p>
-    </footer>
-</div>
+    </section>
+
+    <section class="plans-section">
+        <h2>Monetization Plans</h2>
+        <p>Choose a plan that helps you grow and monetize your Facebook presence.</p>
+        <div class="plans-grid">
+            <article class="plan-card">
+                <div class="plan-header">
+                    <h3>Starter</h3>
+                    <p class="price">Free</p>
+                </div>
+                <ul>
+                    <li>Basic analytics</li>
+                    <li>Content scheduling (limited)</li>
+                    <li>Community support</li>
+                </ul>
+                <div class="plan-actions"><button>Get Started</button></div>
+            </article>
+
+            <article class="plan-card">
+                <div class="plan-header">
+                    <h3>Basic</h3>
+                    <p class="price">$9.99/mo</p>
+                </div>
+                <ul>
+                    <li>Audience growth tools</li>
+                    <li>Ad campaign templates</li>
+                    <li>Revenue reports</li>
+                </ul>
+                <div class="plan-actions"><button>Choose Basic</button></div>
+            </article>
+
+            <article class="plan-card recommended">
+                <div class="plan-header">
+                    <h3>Growth</h3>
+                    <p class="price">$14.99/mo</p>
+                </div>
+                <div class="badge">Recommended</div>
+                <ul>
+                    <li>Advanced audience insights</li>
+                    <li>Increased ad budget options</li>
+                    <li>Priority support & training</li>
+                </ul>
+                <div class="plan-actions"><button>Choose Growth</button></div>
+            </article>
+
+            <article class="plan-card">
+                <div class="plan-header">
+                    <h3>Pro</h3>
+                    <p class="price">$29.99/mo</p>
+                </div>
+                <ul>
+                    <li>Dedicated account manager</li>
+                    <li>Custom analytics reports</li>
+                    <li>Advanced ad optimization</li>
+                </ul>
+                <div class="plan-actions"><button>Choose Pro</button></div>
+            </article>
+
+            <article class="plan-card">
+                <div class="plan-header">
+                    <h3>Business</h3>
+                    <p class="price">Custom</p>
+                </div>
+                <ul>
+                    <li>Enterprise ad management</li>
+                    <li>API access & integrations</li>
+                    <li>White-glove onboarding</li>
+                </ul>
+                <div class="plan-actions"><button>Contact Sales</button></div>
+            </article>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2024 FACEBOOK MONETIZER. All rights reserved.</p>
+</footer>
+
+    <script src="app.js"></script>
+</body>
 </html>
